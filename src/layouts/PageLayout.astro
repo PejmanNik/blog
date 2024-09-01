@@ -23,5 +23,43 @@ const { title, description } = Astro.props;
       <slot />
     </main>
     <Footer />
+
+    <script>
+      // Source: https://github.com/JuanM04/portfolio/blob/983b0ed0eabdac37bf8b7912d3e8128a443192b9/src/pages/docs/%5B...documentSlug%5D.astro#L74-L103
+      // From this comment: https://github.com/withastro/astro/issues/4433#issuecomment-1584019991
+      /**
+       * @params {HTMLCollectionOf<HTMLElement>} graphs
+       */
+      async function renderDiagrams(graphs: HTMLCollectionOf<Element>) {
+        const { default: mermaid } = await import("mermaid");
+        mermaid.initialize({
+          startOnLoad: false,
+          fontFamily: "var(--sans-font)",        
+          theme: window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "default",
+        });
+    
+        for (const graph of graphs) {
+          const content = (graph.querySelector(".mermaid-src") as HTMLElement)?.innerText;
+          if (!content) continue;
+          let svg = document.createElement("svg");
+          const id = (svg.id = "mermaid-" + Math.round(Math.random() * 100000));
+          graph.appendChild(svg);
+          mermaid.render(id, content).then((result) => {
+            graph.innerHTML = result.svg;
+          });
+        }
+      }
+    
+      function init(){
+        const graphs = document.getElementsByClassName("mermaid");
+        if (document.getElementsByClassName("mermaid").length > 0) {
+          renderDiagrams(graphs);
+        }
+      }
+      document.addEventListener("DOMContentLoaded", init);
+      document.addEventListener("astro:after-swap", init);
+    </script>    
   </body>
 </html>
