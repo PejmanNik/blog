@@ -7,7 +7,7 @@ import tailwindcss from "@tailwindcss/vite";
 // https://astro.build/config
 export default defineConfig({
   site: "https://pejmannik.dev",
-  trailingSlash: "ignore",
+  trailingSlash: "always",
   integrations: [mdx(), sitemap()],
   markdown: {
     remarkPlugins: [mermaid]
