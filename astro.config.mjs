@@ -8,12 +8,17 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   site: "https://pejmannik.dev",
   trailingSlash: "always",
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: (page) => page !== "https://pejmannik.dev/",
+    }),
+  ],
   markdown: {
-    remarkPlugins: [mermaid]
+    remarkPlugins: [mermaid],
   },
 
   vite: {
-    plugins: [tailwindcss()]
-  }
+    plugins: [tailwindcss()],
+  },
 });
