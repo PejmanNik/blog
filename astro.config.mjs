@@ -1,14 +1,19 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
 import { mermaid } from "./src/lib/mermaid";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://pejmannik.dev",
-  integrations: [mdx(), sitemap(), tailwind()],
+  trailingSlash: "ignore",
+  integrations: [mdx(), sitemap()],
   markdown: {
     remarkPlugins: [mermaid]
+  },
+
+  vite: {
+    plugins: [tailwindcss()]
   }
 });

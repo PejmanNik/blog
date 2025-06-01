@@ -3,6 +3,7 @@ import Head from "@components/Head.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import { SITE } from "@consts";
+import '../styles/global.css'
 
 type Props = {
   title: string;
@@ -15,6 +16,7 @@ const { title, description } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <Head title={`${title} | ${SITE.NAME}`} description={description} />
   </head>
   <body>
