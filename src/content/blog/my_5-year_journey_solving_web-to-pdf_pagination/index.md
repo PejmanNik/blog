@@ -20,7 +20,7 @@ I found a hack to solve my issues. I used standard Puppeteer and Chrome’s `toP
 
 The algorithm then merged these two together to create the final report. The result was the **[Puppeteer-report](https://github.com/PejmanNik/puppeteer-report)** library.
 
-[![puppeteer-report](https://raw.githubusercontent.com/PejmanNik/puppeteer-report/master/.attachment/image1.png)](https://github.com/PejmanNik/puppeteer-report)
+![puppeteer-report](https://raw.githubusercontent.com/PejmanNik/puppeteer-report/master/.attachment/image1.png)
 
 This was elegant, but very limited. *pdf-lib* was eventually abandoned, and merging PDFs broke certain features like hyperlinks. My main issue, however, was that I needed more control over pagination, something like MS Word. I wanted to create sections, have complete control over design and spacing, and make tables look elegant. Specifically, when a table split across multiple pages, I needed the table header to repeat automatically, and I needed a table footer (e.g., to show a sum of orders) at the bottom of the page. Extending this library to support that was impossible.
 
@@ -29,7 +29,7 @@ The following year, I created **[Jikji](https://github.com/PejmanNik/jikji)**.
 
 This solution was based on React. It allowed me to design reports using React components and provide a custom layout engine instead of relying on the browser to handle pagination. It was even possible to preview the paginated report directly in the web app, allowing users to print it directly or save it as a PDF. It solved my design problems and made creating component based reports easy.
 
-[![jikji](https://raw.githubusercontent.com/PejmanNik/jikji/main/docs/static/img/layout_convert.svg)](https://github.com/PejmanNik/jikji)
+![Jikji](jikji.png)
 
 To convert the React App into a report, Jikji hooked into the **React Fiber tree**. It rearranged components based on page size, injected header and footer components, and recreated the component tree with the new layout.
 
@@ -60,7 +60,7 @@ I decided to merge the simple HTML basis of *Puppeteer-report* with the advanced
 
 Paprize provides the same idea of component based reports but uses native HTML elements. Instead of complex pre calculations, it uses a very simple algorithm: **Tentative Placement**.
 
-![Components](https://raw.githubusercontent.com/PejmanNik/paprize/refs/heads/main/website/static/img/components.svg)
+![Paprize](./paprize.png)
 
 The engine checks if an element's dimensions fit into the remaining space on the page. It adds the element *tentatively*. If an overflow occurs, the layout engine rolls back and tries to apply the same logic to the child nodes of that element to split it gracefully.
 
