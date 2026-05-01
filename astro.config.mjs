@@ -3,6 +3,7 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import { mermaid } from "./src/lib/mermaid";
 import tailwindcss from "@tailwindcss/vite";
+import remarkGithubAlerts from 'remark-github-alerts';
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,7 +16,7 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: [mermaid],
+    remarkPlugins: [mermaid, remarkGithubAlerts],
   },
 
   vite: {
