@@ -1,6 +1,6 @@
 ---
 title: "UUID v7 for SQL Server Indexes: Still a Bad Idea"
-description: ""
+description: "Explore why UUID v7 fails as a index key in SQL Server, how uniqueidentifier sorting works, and why it causes massive index fragmentation."
 date: "05 01 2026"
 draft: false
 ---
