@@ -4,9 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --font-serif: "Inter", sans-serif;
+}
+
 html {
   overflow-y: scroll;
   color-scheme: light;
+  font-optical-sizing: auto;
 }
 
 html.dark {
@@ -79,3 +84,26 @@ html.scrolled #back-to-top {
   display: flex;
   justify-content: center;
 }
+
+/* .markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  color: inherit;
+  border-left: 0.25em solid;
+}
+
+.markdown-alert-title {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.markdown-alert-note {
+  border-left-color: #0969da;
+  background-color: #e6f1ff;
+}
+
+.markdown-alert-note .markdown-alert-title {
+  color: #0969da;
+} */
